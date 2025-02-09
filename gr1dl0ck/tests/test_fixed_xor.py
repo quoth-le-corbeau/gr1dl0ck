@@ -1,5 +1,5 @@
-from fixed_xor import get_fixed_xor
-from test.reuseables import dict_parametrize
+from gr1dl0ck.fixed_xor import get_fixed_xor, _custom_xor
+from gr1dl0ck.tests.reuseables import dict_parametrize
 
 
 @dict_parametrize(
@@ -13,4 +13,9 @@ from test.reuseables import dict_parametrize
 )
 def test_get_fixed_xor(input_1, input_2, expected_output):
     assert get_fixed_xor(input_1, input_2) == expected_output
-    pass
+
+
+@dict_parametrize({"case_1": {"a": 5, "b": 3, "expected_output": 6}})
+def test__custom_xor(a, b, expected_output):
+    assert a ^ b == expected_output
+    assert _custom_xor(a, b) == expected_output
