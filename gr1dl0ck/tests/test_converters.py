@@ -1,4 +1,4 @@
-from converters import (
+from gr1dl0ck.converters import (
     hex_to_b64,
     b64_to_hex,
     custom_hex_to_b64,
@@ -8,7 +8,7 @@ from converters import (
     custom_hex,
     custom_bin,
 )
-from test.reuseables import dict_parametrize
+from gr1dl0ck.tests.reuseables import dict_parametrize
 
 TEST_HEX = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d"
 TEST_B64 = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t"

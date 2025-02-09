@@ -97,7 +97,9 @@ def custom_b64_to_hex(b64_string: str) -> str:
     """
     b64_string = b64_string.rstrip("=")
     binary_string = "".join(
-        bin(_BASE64_LOOK_UP_STRING.index(c))[2:].zfill(_BASE_64_BINARY_CHUNK_LENGTH)
+        custom_bin(_BASE64_LOOK_UP_STRING.index(c))[2:].zfill(
+            _BASE_64_BINARY_CHUNK_LENGTH
+        )
         for c in b64_string
     )
     excess_bits = len(binary_string) % _BYTE_LENGTH
