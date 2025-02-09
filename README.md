@@ -21,3 +21,38 @@ Always operate on raw bytes, never on encoded strings. Only use hex and base64 f
 - should produce:
 `746865206b696420646f6e277420706c6179`
 
+## Challenge 3: Single-byte XOR cipher
+
+- The hex encoded string: 
+
+`1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736`
+
+- ... has been XOR'd against a single character. Find the key, decrypt the message. 
+- You can do this by hand. But don't: write code to do it for you. 
+- How? Devise some method for "scoring" a piece of English plaintext. Character frequency is a good metric. Evaluate each output and choose the one with the best score. 
+
+
+
+
+## How Base64 Works
+- Base64 is an encoding scheme that converts binary data into a text-based format 
+- - using a set of 64 characters (A-Z, a-z, 0-9, "+", and "/"). 
+- It is commonly used to encode data for transmission over text-based protocols 
+- - such as email (MIME) and HTTP. 
+- Base64 ensures that binary data remains intact without modification when transferred between systems.
+
+How Base64 Works
+Takes binary data and divides it into 6-bit chunks.
+Maps each 6-bit chunk to one of the 64 characters in the Base64 alphabet.
+Pads the output with = if necessary to maintain a multiple of 4 characters.
+Common Uses of Base64
+Encoding images, audio, and files for embedding in emails or web pages.
+Storing binary data (like cryptographic keys) in text-based formats (JSON, XML).
+Sending data in URL parameters (though URL-safe variants exist).
+- Takes binary data and divides it into 6-bit chunks.
+- Maps each 6-bit chunk to one of the 64 characters in the Base64 alphabet.
+- Pads the output with = if necessary to maintain a multiple of 4 characters.
+- Common Uses of Base64
+- Encoding images, audio, and files for embedding in emails or web pages.
+- Storing binary data (like cryptographic keys) in text-based formats (JSON, XML).
+- Sending data in URL parameters (though URL-safe variants exist).

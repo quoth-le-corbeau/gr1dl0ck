@@ -2,8 +2,11 @@ from converters import (
     hex_to_b64,
     b64_to_hex,
     custom_hex_to_b64,
-    _hex_to_binary,
+    custom_hex_to_binary,
     _bin_to_base_10,
+    custom_b64_to_hex,
+    custom_hex,
+    custom_bin,
 )
 from test.reuseables import dict_parametrize
 
@@ -41,6 +44,39 @@ def test_b64_to_hex(base64_string, expected_hex_converted):
 )
 def test_custom_hex_to_b64(hex_string, expected_base64_converted):
     assert custom_hex_to_b64(hex_string=hex_string) == expected_base64_converted
+
+
+@dict_parametrize(
+    {
+        "case_1": {"b64_string": TEST_B64, "expected_hex_converted": TEST_HEX},
+        "Hello": {"b64_string": HELLO_B64, "expected_hex_converted": HELLO_HEX},
+    }
+)
+def test_custom_b64_to_hex(b64_string, expected_hex_converted):
+    assert custom_b64_to_hex(b64_string=b64_string) == expected_hex_converted
+
+
+@dict_parametrize(
+    {
+        "case_1": {"n": 255, "expected_hex": "0xff"},
+        "case_2": {"n": -255, "expected_hex": "-0xff"},
+        "case_3": {"n": 0, "expected_hex": "0x0"},
+        "case_4": {"n": 4096, "expected_hex": "0x1000"},
+    }
+)
+def test_custom_hex(n, expected_hex):
+    assert custom_hex(n=n) == expected_hex
+
+
+@dict_parametrize(
+    {
+        "case_1": {"n": 10, "expected_bin": "0b1010"},
+        "case_2": {"n": -10, "expected_bin": "-0b1010"},
+        "case_3": {"n": 0, "expected_bin": "0b0"},
+    }
+)
+def test_custom_bin(n, expected_bin):
+    assert custom_bin(n=n) == expected_bin
 
 
 @dict_parametrize(
@@ -110,8 +146,8 @@ def test_custom_hex_to_b64(hex_string, expected_base64_converted):
         },
     }
 )
-def test__hex_to_binary(hex_string, expected_binary_values):
-    assert _hex_to_binary(hex_string=hex_string) == expected_binary_values
+def test_custom_hex_to_binary(hex_string, expected_binary_values):
+    assert custom_hex_to_binary(hex_string=hex_string) == expected_binary_values
 
 
 @dict_parametrize(
